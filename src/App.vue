@@ -28,12 +28,14 @@ export default {
 
 <template>
     <AppHeader @search-form="fetchFilmName" />
-    <ul v-for="film in films" :key="film.id">
-        <li>{{ film.name }}</li>
-        <li>{{ film.original_name }}</li>
-        <li>{{ film.original_language }}</li>
-        <li>{{ film.vote_average }}</li>
-    </ul>
+    <div class="container d-flex gap-4 mt-5 flex-wrap">
+        <ul v-for="film in films" :key="film.id">
+            <li>{{ film.name }}</li>
+            <li>{{ film.original_name }}</li>
+            <li>{{ film.original_language }}</li>
+            <li>{{ film.vote_average }}</li>
+        </ul>
+    </div>
 </template>
 
 <style lang="scss">

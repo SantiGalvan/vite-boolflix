@@ -4,6 +4,14 @@ export default {
 }
 </script>
 
-<template></template>
+<template>
+    <!-- Header -->
+    <header>
+        <div class="title">
+            <h1>Boolflix</h1>
+        </div>
+        <div class="form"></div>
+    </header>
+</template>
 
 <style></style>

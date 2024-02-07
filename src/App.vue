@@ -10,12 +10,30 @@ const apiKey = '&api_key=8b15dd81bdce2600f4ff499a5c65a455'
 
 export default {
     name: 'Boolflix',
-    components: { AppHeader }
+    data: () => ({
+        films: [],
+        movies: []
+    }),
+    components: { AppHeader },
+    methods: {
+        fetchFilmName(term) {
+            const endpoint = `${endpointTv}${query}${term}${apiKey}`
+            axios.get(endpoint).then(res => {
+                this.films = res.data.results
+            })
+        }
+    }
 };
 </script>
 
 <template>
-    <AppHeader />
+    <AppHeader @search-form="fetchFilmName" />
+    <ul v-for="film in films" :key="film.id">
+        <li>{{ film.name }}</li>
+        <li>{{ film.original_name }}</li>
+        <li>{{ film.original_language }}</li>
+        <li>{{ film.vote_average }}</li>
+    </ul>
 </template>
 
 <style lang="scss">

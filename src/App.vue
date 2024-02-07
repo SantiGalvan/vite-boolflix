@@ -1,5 +1,7 @@
 <script>
+import axios from 'axios'
 import AppHeader from './components/AppHeader.vue';
+
 export default {
     name: 'Boolflix',
     components: { AppHeader }

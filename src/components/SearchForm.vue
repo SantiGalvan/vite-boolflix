@@ -6,7 +6,7 @@ export default {
 
 <template>
     <form>
-        <div class="input-group mb-3">
+        <div class="input-group">
             <input type="text" class="form-control" placeholder="Recipient's username">
             <button class="btn" type="button" id="button-addon2">Cerca</button>
         </div>

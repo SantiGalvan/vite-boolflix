@@ -1,6 +1,10 @@
 <script>
+import { store } from '../data/store.js'
+import FilmsList from './Films/FilmsList.vue';
 export default {
-    name: 'AppMain'
+    name: 'AppMain',
+    data: () => ({ store }),
+    components: { FilmsList }
 }
 </script>
 
@@ -8,15 +12,11 @@ export default {
     <!-- Main -->
     <main>
 
-        <!-- Section TV -->
-        <section id="section-tv">
-            <div class="container my-5">
-                <h2>Movies</h2>
-                <ul class="row">
-                    <li class="col"></li>
-                </ul>
-            </div>
-        </section>
+        <!-- Section Movies -->
+        <FilmsList :tv="store.films" sectionTitle="Movies" />
+
+        <!-- Section TV Series -->
+        <FilmsList :tv="store.movies" sectionTitle="TV Series" />
     </main>
 </template>
 

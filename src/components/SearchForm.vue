@@ -15,7 +15,7 @@ export default {
     <form @submit.prevent="$emit('submit-form', searchTerm)">
         <div class="input-group">
             <input type="text" class="form-control" :placeholder="placeholder" v-model.trim="searchTerm">
-            <button class="btn" type="button" id="button-addon2">Cerca</button>
+            <button class="btn">Cerca</button>
         </div>
     </form>
 </template>

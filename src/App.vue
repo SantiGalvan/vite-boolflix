@@ -1,10 +1,14 @@
 <script>
+import AppHeader from './components/AppHeader.vue';
 export default {
-    name: 'Boolflix'
+    name: 'Boolflix',
+    components: { AppHeader }
 };
 </script>
 
-<template></template>
+<template>
+    <AppHeader />
+</template>
 
 <style lang="scss">
 @use './assets/scss/style.scss'

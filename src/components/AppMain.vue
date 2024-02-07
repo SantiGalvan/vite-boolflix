@@ -13,10 +13,10 @@ export default {
     <main>
 
         <!-- Section Movies -->
-        <FilmsList :tv="store.films" sectionTitle="Movies" />
+        <FilmsList v-if="store.films.length !== 0" :tv="store.films" sectionTitle="Movies" />
 
         <!-- Section TV Series -->
-        <FilmsList :tv="store.movies" sectionTitle="TV Series" />
+        <FilmsList v-if="store.movies.length !== 0" :tv="store.movies" sectionTitle="TV Series" />
     </main>
 </template>
 

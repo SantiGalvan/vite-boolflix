@@ -12,16 +12,17 @@ const apiKey = '&api_key=8b15dd81bdce2600f4ff499a5c65a455';
 
 export default {
     name: 'Boolflix',
-    data: () => ({
-        films: [],
-        movies: []
-    }),
     components: { AppHeader, AppMain },
     methods: {
         fetchFilmName(term) {
-            const endpoint = `${endpointTv}${query}${term}${apiKey}`
+            const endpointFilm = `${endpointTv}${query}${term}${apiKey}`
+            axios.get(endpointFilm).then(res => {
+                store.films = res.data.results
+            })
+
+            const endpoint = `${endpointMovie}${query}${term}${apiKey}`
             axios.get(endpoint).then(res => {
-                this.films = res.data.results
+                store.movies = res.data.results
             })
         }
     }

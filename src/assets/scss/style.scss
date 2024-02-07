@@ -3,3 +3,17 @@
 body {
     font-family: $main-font;
 }
+
+// Header
+header {
+    min-height: 100px;
+    background-color: black;
+
+    h1 {
+        color: $text-red;
+        line-height: 100px;
+        text-transform: uppercase;
+        font-weight: 800;
+        margin-left: 20px;
+    }
+}

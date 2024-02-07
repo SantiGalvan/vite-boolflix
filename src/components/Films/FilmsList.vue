@@ -13,7 +13,7 @@ export default {
 <template>
     <section>
         <div class="container my-5">
-            <h2>{{ sectionTitle }}</h2>
+            <h2 class="my-5">{{ sectionTitle }}</h2>
             <ul class="row g-4">
                 <FilmCard :movies="tv" />
             </ul>

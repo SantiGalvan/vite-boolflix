@@ -13,7 +13,7 @@ export default {
             <h1>Boolflix</h1>
         </div>
         <div class="form">
-            <SearchForm />
+            <SearchForm placeholder="Cerca un film o una serie TV" />
         </div>
     </header>
 </template>

@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios'
 import AppHeader from './components/AppHeader.vue';
+import AppMain from './components/AppMain.vue';
 
 // Variabili API
 const endpointTv = 'https://api.themoviedb.org/3/search/tv'
@@ -14,7 +15,7 @@ export default {
         films: [],
         movies: []
     }),
-    components: { AppHeader },
+    components: { AppHeader, AppMain },
     methods: {
         fetchFilmName(term) {
             const endpoint = `${endpointTv}${query}${term}${apiKey}`
@@ -28,6 +29,7 @@ export default {
 
 <template>
     <AppHeader @search-form="fetchFilmName" />
+    <AppMain />
     <div class="container d-flex gap-4 mt-5 flex-wrap">
         <ul v-for="film in films" :key="film.id">
             <li>{{ film.name }}</li>

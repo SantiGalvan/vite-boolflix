@@ -2,11 +2,18 @@
 
 body {
     font-family: $main-font;
+    overflow: hidden;
+}
+
+// Generics
+ul {
+    list-style-type: none;
+    padding: 0;
 }
 
 // Header
 header {
-    min-height: 100px;
+    max-height: 100px;
     background-color: black;
 
     display: flex;
@@ -33,5 +40,26 @@ header {
                 background-color: $color-red;
             }
         }
+    }
+}
+
+// Main
+main {
+    background-color: gray;
+    height: calc(100vh - 100px);
+    overflow: auto;
+}
+
+// Section
+section {
+
+    h2 {
+        font-weight: 800;
+        font-size: 3rem;
+        color: #fff;
+    }
+
+    .img-lang {
+        width: 60px;
     }
 }

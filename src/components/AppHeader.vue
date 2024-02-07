@@ -2,7 +2,8 @@
 import SearchForm from './SearchForm.vue';
 export default {
     name: 'AppHeader',
-    components: { SearchForm }
+    components: { SearchForm },
+    emits: ['search-form']
 }
 </script>
 
@@ -13,7 +14,7 @@ export default {
             <h1>Boolflix</h1>
         </div>
         <div class="form">
-            <SearchForm placeholder="Cerca un film o una serie TV" />
+            <SearchForm placeholder="Cerca un film o una serie TV" @submit-form="$emit('search-form', $event)" />
         </div>
     </header>
 </template>

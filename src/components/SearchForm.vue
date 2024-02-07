@@ -1,6 +1,9 @@
 <script>
 export default {
     name: 'SearchForm',
+    data: () => ({
+        searchTerm: ''
+    }),
     props: {
         placeholder: String
     }
@@ -10,7 +13,7 @@ export default {
 <template>
     <form>
         <div class="input-group">
-            <input type="text" class="form-control" :placeholder="placeholder">
+            <input type="text" class="form-control" :placeholder="placeholder" v-model="searchTerm">
             <button class="btn" type="button" id="button-addon2">Cerca</button>
         </div>
     </form>

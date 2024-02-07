@@ -1,6 +1,8 @@
 <script>
+import SearchForm from './SearchForm.vue';
 export default {
-    name: 'AppHeader'
+    name: 'AppHeader',
+    components: { SearchForm }
 }
 </script>
 
@@ -10,7 +12,9 @@ export default {
         <div class="title">
             <h1>Boolflix</h1>
         </div>
-        <div class="form"></div>
+        <div class="form">
+            <SearchForm />
+        </div>
     </header>
 </template>
 

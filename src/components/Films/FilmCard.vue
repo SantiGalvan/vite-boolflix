@@ -24,6 +24,10 @@ export default {
                 return 'src/assets/img/not-image.jpg'
             }
             return `https://image.tmdb.org/t/p/w342/${this.productions.backdrop_path}`
+        },
+        voteAverage() {
+            const voteAverage = parseInt(this.productions.vote_average / 2)
+            return voteAverage
         }
     }
 }
@@ -35,8 +39,8 @@ export default {
         <p>{{ originalTitle }}</p>
         <img v-if="hasFlag" :src="flagSrc" :alt="productions.original_language" class="img-fluid img-lang">
         <p v-else>{{ productions.original_language }}</p>
-        <p>{{ productions.vote_average }}</p>
-        <img :src="coverSrc" :alt="productions.original_language">
+        <p>{{ voteAverage }}</p>
+        <img :src="coverSrc" :alt="productions.original_language" class="cover-img">
     </li>
 </template>
 

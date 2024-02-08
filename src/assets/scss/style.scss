@@ -64,6 +64,9 @@ section {
         height: 400px;
         cursor: pointer;
         position: relative;
+        box-shadow: 0 0 5px 0 black;
+        background-color: transparent;
+        border: 0;
 
         &:hover .card-body {
             display: block;
@@ -89,12 +92,17 @@ section {
         background-color: rgba(0, 0, 0, 0.95);
         color: #fff;
         display: none;
+        overflow: auto;
 
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
         bottom: 0;
+    }
+
+    .star {
+        color: $color-star;
     }
 }
 

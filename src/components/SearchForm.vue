@@ -5,7 +5,8 @@ export default {
         searchTerm: ''
     }),
     props: {
-        placeholder: String
+        placeholder: String,
+        buttonLabel: String
     },
     emits: ['submit-form']
 }
@@ -15,7 +16,7 @@ export default {
     <form @submit.prevent="$emit('submit-form', searchTerm)">
         <div class="input-group">
             <input type="text" class="form-control" :placeholder="placeholder" v-model.trim="searchTerm">
-            <button class="btn">Cerca</button>
+            <button class="btn">{{ buttonLabel }}</button>
         </div>
     </form>
 </template>

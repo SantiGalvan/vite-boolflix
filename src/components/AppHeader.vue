@@ -14,7 +14,8 @@ export default {
             <h1>Boolflix</h1>
         </div>
         <div class="form">
-            <SearchForm placeholder="Cerca un film o una serie TV" @submit-form="$emit('search-form', $event)" />
+            <SearchForm placeholder="Cerca un film o una serie TV" @submit-form="$emit('search-form', $event)"
+                buttonLabel="Cerca" />
         </div>
     </header>
 </template>

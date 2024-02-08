@@ -26,8 +26,8 @@ export default {
             return `https://image.tmdb.org/t/p/w342/${this.productions.poster_path}`
         },
         voteAverage() {
-            const voteAverage = parseInt(this.productions.vote_average / 2)
-            return voteAverage
+            const voteRating = parseInt(this.productions.vote_average / 2)
+            return voteRating
         },
     }
 }
@@ -39,22 +39,21 @@ export default {
             <figure>
                 <img :src="coverSrc" :alt="productions.original_language" class="img-fluid cover-img">
             </figure>
-            <div class="card-body">
+            <div class="card-body text-center">
                 <h3 class="card-title mb-4">{{ name }}</h3>
                 <h6 class="card-subtitle mb-4">{{ originalTitle }}</h6>
-                <div v-if="hasFlag" class="language-img text-center">
+                <div v-if="hasFlag" class="language-img">
                     <img :src="flagSrc" :alt="productions.original_language" class="mb-4 img-fluid img-lang">
                 </div>
-                <div v-else class="language-text text-center">
+                <div v-else class="language-text">
                     <p>{{ productions.original_language }}</p>
                 </div>
-                <div class="rating text-center">
-                    <p>{{ voteAverage }}</p>
-                    <FontAwesomeIcon icon="fa-solid fa-star" />
-                    <FontAwesomeIcon icon="fa-regular fa-star" />
-                    <FontAwesomeIcon icon="fa-regular fa-star" />
-                    <FontAwesomeIcon icon="fa-regular fa-star" />
-                    <FontAwesomeIcon icon="fa-regular fa-star" />
+                <div class="rating-star">
+                    <FontAwesomeIcon :icon="voteAverage > 0 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
+                    <FontAwesomeIcon :icon="voteAverage > 1 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
+                    <FontAwesomeIcon :icon="voteAverage > 2 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
+                    <FontAwesomeIcon :icon="voteAverage > 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
+                    <FontAwesomeIcon :icon="voteAverage > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
                 </div>
             </div>
         </div>

@@ -8,14 +8,15 @@ export default {
         placeholder: String,
         buttonLabel: String
     },
-    emits: ['submit-form']
+    emits: ['submit-form', 'input-change']
 }
 </script>
 
 <template>
     <form @submit.prevent="$emit('submit-form', searchTerm)">
         <div class="input-group">
-            <input type="text" class="form-control" :placeholder="placeholder" v-model.trim="searchTerm">
+            <input type="text" class="form-control" @keyup="$emit('input-change', searchTerm)" :placeholder="placeholder"
+                v-model.trim="searchTerm">
             <button class="btn">{{ buttonLabel }}</button>
         </div>
     </form>

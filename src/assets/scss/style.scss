@@ -33,8 +33,8 @@ header {
         flex-basis: 20%;
 
         button {
-            background-color: $color-red;
-            color: #fff;
+            background-color: $btn-color;
+            color: $text-color;
 
             &:hover {
                 background-color: $color-red;
@@ -56,7 +56,7 @@ section {
     h2 {
         font-weight: 800;
         font-size: 3rem;
-        color: #fff;
+        color: $text-color;
     }
 
     .card {
@@ -90,7 +90,7 @@ section {
 
     .card-body {
         background-color: rgba(0, 0, 0, 0.95);
-        color: #fff;
+        color: $text-color;
         display: none;
         overflow: auto;
 

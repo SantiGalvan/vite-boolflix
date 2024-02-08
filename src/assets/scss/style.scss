@@ -45,7 +45,7 @@ header {
 
 // Main
 main {
-    background-color: gray;
+    background-color: $main-color;
     height: calc(100vh - 100px);
     overflow: auto;
 }

@@ -42,18 +42,28 @@ export default {
             <div class="card-body text-center">
                 <h3 class="card-title mb-4">{{ name }}</h3>
                 <h6 class="card-subtitle mb-4">{{ originalTitle }}</h6>
-                <div v-if="hasFlag" class="language-img">
-                    <img :src="flagSrc" :alt="productions.original_language" class="mb-4 img-fluid img-lang">
+                <div class="language-img d-flex justify-content-center gap-4">
+                    <img v-if="hasFlag" :src="flagSrc" :alt="productions.original_language" class="mb-4 img-fluid img-lang">
+                    <div v-else class="language-text">
+                        <p>{{ productions.original_language }}</p>
+                    </div>
+                    <div v-if="adult" class="age-adult mb-4">+18</div>
+                    <div v-else class="age-kid mb-4"></div>
                 </div>
-                <div v-else class="language-text">
-                    <p>{{ productions.original_language }}</p>
-                </div>
-                <div class="rating-star">
+                <div class="rating-star mb-4">
                     <FontAwesomeIcon :icon="voteAverage > 0 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
                     <FontAwesomeIcon :icon="voteAverage > 1 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
                     <FontAwesomeIcon :icon="voteAverage > 2 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
                     <FontAwesomeIcon :icon="voteAverage > 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
                     <FontAwesomeIcon :icon="voteAverage > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
+                </div>
+                <div class="date" v-if="productions.first_air_date">
+                    <h6>Anno publicazione</h6>
+                    <p>{{ productions.first_air_date }}</p>
+                </div>
+                <div class="storyline" v-if="productions.overview">
+                    <h6>Trama</h6>
+                    <p>{{ productions.overview }}</p>
                 </div>
             </div>
         </div>

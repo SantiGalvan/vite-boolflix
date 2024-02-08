@@ -24,13 +24,16 @@ export default {
             axios.get(endpoint).then(res => {
                 store.movies = res.data.results
             })
+        },
+        filteredTerm(term) {
+            store.filteredTerm = term;
         }
     }
 };
 </script>
 
 <template>
-    <AppHeader @search-form="fetchFilmName" />
+    <AppHeader @search-form="fetchFilmName" @input-writes="filteredTerm" />
     <AppMain />
 </template>
 

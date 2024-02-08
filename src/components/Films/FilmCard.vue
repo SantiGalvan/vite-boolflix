@@ -18,6 +18,12 @@ export default {
         flagSrc() {
             const url = new URL(`../../assets/img/${this.productions.original_language}.png`, import.meta.url);
             return url.href;
+        },
+        coverSrc() {
+            if (!this.productions.backdrop_path) {
+                return 'src/assets/img/not-image.jpg'
+            }
+            return `https://image.tmdb.org/t/p/w342/${this.productions.backdrop_path}`
         }
     }
 }
@@ -30,6 +36,7 @@ export default {
         <img v-if="hasFlag" :src="flagSrc" :alt="productions.original_language" class="img-fluid img-lang">
         <p v-else>{{ productions.original_language }}</p>
         <p>{{ productions.vote_average }}</p>
+        <img :src="coverSrc" :alt="productions.original_language">
     </li>
 </template>
 

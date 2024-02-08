@@ -15,6 +15,12 @@ export default {
     components: { AppHeader, AppMain },
     methods: {
         fetchFilmName(term) {
+            if (!store.filteredTerm) {
+                store.films = [];
+                store.movies = [];
+                return
+            }
+
             const endpointFilm = `${endpointTv}${query}${term}${apiKey}`
             axios.get(endpointFilm).then(res => {
                 store.films = res.data.results

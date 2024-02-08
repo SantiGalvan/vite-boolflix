@@ -85,7 +85,9 @@ section {
     }
 
     .img-lang {
-        max-width: 50px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
     }
 
     .card-body {
@@ -101,8 +103,30 @@ section {
         bottom: 0;
     }
 
+    .language-text {
+        p {
+            line-height: 50px;
+        }
+    }
+
     .star {
         color: $color-star;
+    }
+
+    .age-adult {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        line-height: 50px;
+        background-color: red;
+    }
+
+    .age-kid {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        line-height: 50px;
+        background-color: green;
     }
 }
 

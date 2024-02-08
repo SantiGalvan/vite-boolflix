@@ -59,12 +59,42 @@ section {
         color: #fff;
     }
 
-    .img-lang {
-        width: 60px;
+    .card {
+        overflow: auto;
+        height: 400px;
+        cursor: pointer;
+        position: relative;
+
+        &:hover .card-body {
+            display: block;
+        }
+    }
+
+    figure {
+        margin: 0;
+        height: 100%;
+        width: 100%;
     }
 
     .cover-img {
-        width: 200px;
+        height: 100%;
+        width: 100%;
+    }
+
+    .img-lang {
+        max-width: 50px;
+    }
+
+    .card-body {
+        background-color: rgba(0, 0, 0, 0.95);
+        color: #fff;
+        display: none;
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
     }
 }
 

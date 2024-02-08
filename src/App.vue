@@ -14,7 +14,7 @@ export default {
     name: 'Boolflix',
     components: { AppHeader, AppMain },
     methods: {
-        fetchFilmName(term) {
+        fetchFilmName() {
             if (!store.filteredTerm) {
                 store.films = [];
                 store.movies = [];

@@ -21,14 +21,12 @@ export default {
                 return
             }
 
-            const endpointFilm = `${endpointTv}${query}${term}${apiKey}`
-            axios.get(endpointFilm).then(res => {
-                store.films = res.data.results
-            })
-
-            const endpoint = `${endpointMovie}${query}${term}${apiKey}`
-            axios.get(endpoint).then(res => {
-                store.movies = res.data.results
+            this.fetchApi(endpointTv, 'films');
+            this.fetchApi(endpointMovie, 'movies');
+        },
+        fetchApi(endpoint, collection) {
+            axios.get(`${endpoint}${query}${store.filteredTerm}${apiKey}`).then(res => {
+                store[collection] = res.data.results
             })
         },
         filteredTerm(term) {

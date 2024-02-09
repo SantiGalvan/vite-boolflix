@@ -29,6 +29,10 @@ export default {
             const voteRating = parseInt(this.productions.vote_average / 2)
             return voteRating
         },
+        date() {
+            const date = this.productions.first_air_date.split('-').reverse().join('/')
+            return date
+        }
     }
 }
 </script>
@@ -55,7 +59,7 @@ export default {
                 </div>
                 <div class="date" v-if="productions.first_air_date">
                     <h6>Anno publicazione</h6>
-                    <p>{{ productions.first_air_date }}</p>
+                    <p>{{ date }}</p>
                 </div>
                 <div class="storyline" v-if="productions.overview">
                     <h6>Trama</h6>

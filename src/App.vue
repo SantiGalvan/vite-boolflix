@@ -5,10 +5,11 @@ import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 
 // Variabili API
+const endpointGeners = 'https://api.themoviedb.org/3/genre/movie/list?'
 const endpointTv = 'https://api.themoviedb.org/3/search/tv';
 const endpointMovie = 'https://api.themoviedb.org/3/search/movie';
 const query = '?query=';
-const apiKey = '&api_key=8b15dd81bdce2600f4ff499a5c65a455';
+const apiKey = 'api_key=8b15dd81bdce2600f4ff499a5c65a455';
 
 export default {
     name: 'Boolflix',
@@ -25,13 +26,18 @@ export default {
             this.fetchApi(endpointMovie, 'movies');
         },
         fetchApi(endpoint, collection) {
-            axios.get(`${endpoint}${query}${store.filteredTerm}${apiKey}`).then(res => {
+            axios.get(`${endpoint}${query}${store.filteredTerm}&${apiKey}`).then(res => {
                 store[collection] = res.data.results
             })
         },
         filteredTerm(term) {
             store.filteredTerm = term;
         }
+    },
+    created() {
+        axios.get(`${endpointGeners}&${apiKey}`).then(res => {
+            store.genres = res.data.genres
+        })
     }
 };
 </script>

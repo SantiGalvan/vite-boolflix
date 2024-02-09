@@ -26,7 +26,7 @@ export default {
             return `https://image.tmdb.org/t/p/w342/${this.productions.poster_path}`
         },
         voteAverage() {
-            const voteRating = parseInt(this.productions.vote_average / 2)
+            const voteRating = Math.ceil(this.productions.vote_average / 2)
             return voteRating
         },
         date() {

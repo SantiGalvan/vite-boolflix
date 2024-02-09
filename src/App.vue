@@ -38,9 +38,15 @@ export default {
             this.fetchApi(endpointMovie, 'movies', store.filteredTerm, query);
         },
         fetchApi(endpoint, collection, option, query = '') {
+            store.isLoading = true
+
             axios.get(`${endpoint}${query}${option}&${apiKey}`).then(res => {
                 store[collection] = res.data.results
-            })
+            }).catch(err => {
+                console.error(err)
+            }).then(() => {
+                store.isLoading = false
+            });
         },
         filteredTerm(term) {
             store.filteredTerm = term;

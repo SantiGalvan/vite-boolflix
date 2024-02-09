@@ -4,5 +4,8 @@ export const store = reactive({
     films: [],
     movies: [],
     filteredTerm: '',
-    genres: []
+    genres: [],
+    selectOption: '',
+    genreFilms: [],
+    genreMovies: []
 });

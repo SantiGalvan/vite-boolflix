@@ -55,7 +55,8 @@ export default {
                     <div v-else class="age-kid mb-4"></div>
                 </div>
                 <div class="rating-star mb-4">
-                    <FontAwesomeIcon v-for="n in 5" :icon="[n <= voteAverage ? 'fas' : 'far', 'star']" class="star" />
+                    <FontAwesomeIcon v-for="n in 5" :key="n" :icon="[n <= voteAverage ? 'fas' : 'far', 'star']"
+                        class="star" />
                 </div>
                 <div class="date" v-if="productions.first_air_date">
                     <h6>Anno publicazione</h6>

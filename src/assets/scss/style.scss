@@ -68,6 +68,10 @@ section {
         background-color: transparent;
         border: 0;
 
+        &:hover {
+            scale: 1.05;
+        }
+
         &:hover .card-body {
             display: block;
         }

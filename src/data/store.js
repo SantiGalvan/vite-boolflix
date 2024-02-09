@@ -7,5 +7,6 @@ export const store = reactive({
     genres: [],
     selectOption: '',
     genreFilms: [],
-    genreMovies: []
+    genreMovies: [],
+    isLoading: false
 });

@@ -10,13 +10,13 @@ export default {
         buttonLabel: String,
         genres: Array
     },
-    emits: ['submit-form', 'input-change']
+    emits: ['submit-form', 'input-change', 'option-select']
 }
 </script>
 
 <template>
     <form @submit.prevent="$emit('submit-form')" class="d-flex gap-2">
-        <select class="form-select" v-model="selectOption">
+        <select class="form-select" v-model="selectOption" @change="$emit('option-select', selectOption)">
             <option value="">All</option>
             <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{ genre.name }}</option>
         </select>

@@ -31,6 +31,9 @@ export default {
                 return
             }
 
+            store.genreFilms = [];
+            store.genreMovies = [];
+
             this.fetchApi(endpointTv, 'films', store.filteredTerm, query);
             this.fetchApi(endpointMovie, 'movies', store.filteredTerm, query);
         },
@@ -49,6 +52,9 @@ export default {
                 store.genreMovies = [];
                 return
             }
+
+            store.films = [];
+            store.movies = [];
 
             this.fetchApi(endpointGenersMovies, 'genreMovies', store.selectOption)
             this.fetchApi(endpointGenersFilms, 'genreFilms', store.selectOption)

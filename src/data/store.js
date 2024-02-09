@@ -1,12 +1,12 @@
 import { reactive } from 'vue';
 
 export const store = reactive({
-    films: [],
+    tvSeries: [],
     movies: [],
     filteredTerm: '',
     genres: [],
     selectOption: '',
-    genreFilms: [],
+    genreTvSeries: [],
     genreMovies: [],
     isLoading: false
 });

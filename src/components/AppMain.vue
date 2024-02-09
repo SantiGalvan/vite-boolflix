@@ -13,20 +13,20 @@ export default {
     <!-- Main -->
     <main>
 
-        <div v-if="store.films.length !== 0 && store.movies.length !== 0">
+        <div v-if="store.tvSeries.length !== 0 || store.movies.length !== 0">
             <!-- Section Movies -->
-            <FilmsList :movies="store.films" sectionTitle="Movies" />
+            <FilmsList :movies="store.movies" sectionTitle="Movies" />
 
             <!-- Section TV Series -->
-            <FilmsList :movies="store.movies" sectionTitle="TV Series" />
+            <FilmsList :movies="store.tvSeries" sectionTitle="TV Series" />
         </div>
 
-        <div v-else-if="store.genreFilms.length !== 0 && store.genreMovies.length !== 0">
+        <div v-else-if="store.genreTvSeries.length !== 0 || store.genreMovies.length !== 0">
             <!-- Section Movies Genres -->
-            <FilmsList v-if="store.genreFilms.length !== 0" :movies="store.genreFilms" sectionTitle="Movies" />
+            <FilmsList :movies="store.genreMovies" sectionTitle="Movies" />
 
             <!-- Section TV Series Genres -->
-            <FilmsList v-if="store.genreMovies.length !== 0" :movies="store.genreMovies" sectionTitle="TV Series" />
+            <FilmsList :movies="store.genreTvSeries" sectionTitle="TV Series" />
         </div>
 
         <!-- Section Initial -->

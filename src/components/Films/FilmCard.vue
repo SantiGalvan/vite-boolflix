@@ -21,7 +21,7 @@ export default {
         },
         coverSrc() {
             if (!this.productions.poster_path) {
-                return 'src/assets/img/not-image.jpg'
+                return 'src/assets/img/not-image.png'
             }
             return `https://image.tmdb.org/t/p/w342/${this.productions.poster_path}`
         },

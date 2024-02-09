@@ -6,12 +6,12 @@ import AppMain from './components/AppMain.vue';
 
 // Variabili API
 const endpointGenersList = 'https://api.themoviedb.org/3/genre/movie/list?'
-const endpointTv = 'https://api.themoviedb.org/3/search/tv';
+const endpointTvSeries = 'https://api.themoviedb.org/3/search/tv';
 const endpointMovie = 'https://api.themoviedb.org/3/search/movie';
 const query = '?query=';
 const apiKey = 'api_key=8b15dd81bdce2600f4ff499a5c65a455';
 const endpointGenersMovies = 'https://api.themoviedb.org/3/discover/movie?with_genres='
-const endpointGenersFilms = 'https://api.themoviedb.org/3/discover/tv?with_genres='
+const endpointGenersTvSeries = 'https://api.themoviedb.org/3/discover/tv?with_genres='
 
 
 export default {
@@ -26,7 +26,7 @@ export default {
     methods: {
         fetchFilmName() {
             if (!store.filteredTerm) {
-                store.films = [];
+                store.tvSeries = [];
                 store.movies = [];
                 return
             }
@@ -34,13 +34,19 @@ export default {
             store.genreFilms = [];
             store.genreMovies = [];
 
-            this.fetchApi(endpointTv, 'films', store.filteredTerm, query);
+            this.fetchApi(endpointTvSeries, 'tvSeries', store.filteredTerm, query);
             this.fetchApi(endpointMovie, 'movies', store.filteredTerm, query);
         },
         fetchApi(endpoint, collection, option, query = '') {
+            store.isLoading = true
+
             axios.get(`${endpoint}${query}${option}&${apiKey}`).then(res => {
                 store[collection] = res.data.results
-            })
+            }).catch(err => {
+                console.error(err)
+            }).then(() => {
+                store.isLoading = false
+            });
         },
         filteredTerm(term) {
             store.filteredTerm = term;
@@ -48,16 +54,16 @@ export default {
         fetchMovieGenre(option) {
             store.selectOption = option
             if (!option) {
-                store.genreFilms = [];
+                store.genreTvSeries = [];
                 store.genreMovies = [];
                 return
             }
 
-            store.films = [];
+            store.tvSeries = [];
             store.movies = [];
 
             this.fetchApi(endpointGenersMovies, 'genreMovies', store.selectOption)
-            this.fetchApi(endpointGenersFilms, 'genreFilms', store.selectOption)
+            this.fetchApi(endpointGenersTvSeries, 'genreTvSeries', store.selectOption)
         }
     }
 };

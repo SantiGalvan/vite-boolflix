@@ -13,7 +13,13 @@ const apiKey = 'api_key=8b15dd81bdce2600f4ff499a5c65a455';
 
 export default {
     name: 'Boolflix',
+    data: () => ({ store }),
     components: { AppHeader, AppMain },
+    created() {
+        axios.get(`${endpointGeners}&${apiKey}`).then(res => {
+            store.genres = res.data.genres
+        })
+    },
     methods: {
         fetchFilmName() {
             if (!store.filteredTerm) {
@@ -33,17 +39,12 @@ export default {
         filteredTerm(term) {
             store.filteredTerm = term;
         }
-    },
-    created() {
-        axios.get(`${endpointGeners}&${apiKey}`).then(res => {
-            store.genres = res.data.genres
-        })
     }
 };
 </script>
 
 <template>
-    <AppHeader @search-form="fetchFilmName" @input-writes="filteredTerm" />
+    <AppHeader @search-form="fetchFilmName" @input-writes="filteredTerm" :genres="store.genres" />
     <AppMain />
 </template>
 

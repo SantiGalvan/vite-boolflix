@@ -28,10 +28,12 @@ export default {
             if (!store.filteredTerm) {
                 store.tvSeries = [];
                 store.movies = [];
+                store.genreTvSeries = [];
+                store.genreMovies = [];
                 return
             }
 
-            store.genreFilms = [];
+            store.genreTvSeries = [];
             store.genreMovies = [];
 
             this.fetchApi(endpointTvSeries, 'tvSeries', store.filteredTerm, query);
@@ -56,6 +58,8 @@ export default {
             if (!option) {
                 store.genreTvSeries = [];
                 store.genreMovies = [];
+                store.tvSeries = [];
+                store.movies = [];
                 return
             }
 

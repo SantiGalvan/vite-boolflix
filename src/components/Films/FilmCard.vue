@@ -47,15 +47,11 @@ export default {
                     <div v-else class="language-text">
                         <p>{{ productions.original_language }}</p>
                     </div>
-                    <div v-if="adult" class="age-adult mb-4">+18</div>
+                    <div v-if="productions.adult" class="age-adult mb-4">+18</div>
                     <div v-else class="age-kid mb-4"></div>
                 </div>
                 <div class="rating-star mb-4">
-                    <FontAwesomeIcon :icon="voteAverage > 0 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
-                    <FontAwesomeIcon :icon="voteAverage > 1 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
-                    <FontAwesomeIcon :icon="voteAverage > 2 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
-                    <FontAwesomeIcon :icon="voteAverage > 3 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
-                    <FontAwesomeIcon :icon="voteAverage > 4 ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="star" />
+                    <FontAwesomeIcon v-for="n in 5" :icon="[n <= voteAverage ? 'fas' : 'far', 'star']" class="star" />
                 </div>
                 <div class="date" v-if="productions.first_air_date">
                     <h6>Anno publicazione</h6>

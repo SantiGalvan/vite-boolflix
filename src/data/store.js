@@ -3,5 +3,9 @@ import { reactive } from 'vue';
 export const store = reactive({
     films: [],
     movies: [],
-    filteredTerm: ''
+    filteredTerm: '',
+    genres: [],
+    selectOption: '',
+    genreFilms: [],
+    genreMovies: []
 });

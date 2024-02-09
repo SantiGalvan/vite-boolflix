@@ -5,14 +5,24 @@ import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 
 // Variabili API
+const endpointGenersList = 'https://api.themoviedb.org/3/genre/movie/list?'
 const endpointTv = 'https://api.themoviedb.org/3/search/tv';
 const endpointMovie = 'https://api.themoviedb.org/3/search/movie';
 const query = '?query=';
-const apiKey = '&api_key=8b15dd81bdce2600f4ff499a5c65a455';
+const apiKey = 'api_key=8b15dd81bdce2600f4ff499a5c65a455';
+const endpointGenersMovies = 'https://api.themoviedb.org/3/discover/movie?with_genres='
+const endpointGenersFilms = 'https://api.themoviedb.org/3/discover/tv?with_genres='
+
 
 export default {
     name: 'Boolflix',
+    data: () => ({ store }),
     components: { AppHeader, AppMain },
+    created() {
+        axios.get(`${endpointGenersList}&${apiKey}`).then(res => {
+            store.genres = res.data.genres
+        })
+    },
     methods: {
         fetchFilmName() {
             if (!store.filteredTerm) {
@@ -21,23 +31,35 @@ export default {
                 return
             }
 
-            this.fetchApi(endpointTv, 'films');
-            this.fetchApi(endpointMovie, 'movies');
+            this.fetchApi(endpointTv, 'films', store.filteredTerm, query);
+            this.fetchApi(endpointMovie, 'movies', store.filteredTerm, query);
         },
-        fetchApi(endpoint, collection) {
-            axios.get(`${endpoint}${query}${store.filteredTerm}${apiKey}`).then(res => {
+        fetchApi(endpoint, collection, option, query = '') {
+            axios.get(`${endpoint}${query}${option}&${apiKey}`).then(res => {
                 store[collection] = res.data.results
             })
         },
         filteredTerm(term) {
             store.filteredTerm = term;
+        },
+        fetchMovieGenre(option) {
+            store.selectOption = option
+            if (!option) {
+                store.genreFilms = [];
+                store.genreMovies = [];
+                return
+            }
+
+            this.fetchApi(endpointGenersMovies, 'genreMovies', store.selectOption)
+            this.fetchApi(endpointGenersFilms, 'genreFilms', store.selectOption)
         }
     }
 };
 </script>
 
 <template>
-    <AppHeader @search-form="fetchFilmName" @input-writes="filteredTerm" />
+    <AppHeader @search-form="fetchFilmName" @input-writes="filteredTerm" @select-genre="fetchMovieGenre"
+        :genres="store.genres" />
     <AppMain />
 </template>
 

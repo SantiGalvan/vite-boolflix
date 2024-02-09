@@ -19,6 +19,12 @@ export default {
         <!-- Section TV Series -->
         <FilmsList v-if="store.movies.length !== 0" :movies="store.movies" sectionTitle="TV Series" />
 
+        <!-- Section Movies Genres -->
+        <FilmsList v-if="store.genreFilms.length !== 0" :movies="store.genreFilms" sectionTitle="Movies" />
+
+        <!-- Section TV Series Genres -->
+        <FilmsList v-if="store.genreMovies.length !== 0" :movies="store.genreMovies" sectionTitle="TV Series" />
+
         <!-- Section Initial -->
         <SectionInitial v-else />
     </main>

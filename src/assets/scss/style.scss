@@ -30,7 +30,11 @@ header {
 
     .form {
         margin-right: 20px;
-        flex-basis: 20%;
+        flex-basis: 30%;
+
+        .form-select {
+            width: 50%;
+        }
 
         button {
             background-color: $btn-color;

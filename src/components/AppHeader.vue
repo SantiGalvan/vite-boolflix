@@ -3,7 +3,10 @@ import SearchForm from './SearchForm.vue';
 export default {
     name: 'AppHeader',
     components: { SearchForm },
-    emits: ['search-form', 'input-writes']
+    emits: ['search-form', 'input-writes'],
+    props: {
+        genres: Array
+    }
 }
 </script>
 
@@ -15,7 +18,7 @@ export default {
         </div>
         <div class="form">
             <SearchForm placeholder="Cerca un film o una serie TV" @submit-form="$emit('search-form')" buttonLabel="Cerca"
-                @input-change="$emit('input-writes', $event)" />
+                @input-change="$emit('input-writes', $event)" :genres="genres" />
         </div>
     </header>
 </template>
